@@ -62,7 +62,7 @@ public class Category {
         archived = true;
     }
 
-    private static String normalizeName(String name) {
+    static String normalizeName(String name) {
         return name.strip();
     }
 }

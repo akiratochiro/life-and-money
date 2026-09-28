@@ -1,5 +1,7 @@
 package com.akiratochiro.life_and_money_api.shared;
 
+import com.akiratochiro.life_and_money_api.category.CategoryAlreadyExistsException;
+import com.akiratochiro.life_and_money_api.category.CategoryNotFoundException;
 import com.akiratochiro.life_and_money_api.user.EmailAlreadyInUseException;
 import com.akiratochiro.life_and_money_api.user.InvalidCredentialsException;
 import com.akiratochiro.life_and_money_api.user.UserNotFoundException;
@@ -65,6 +67,21 @@ public class GlobalExceptionHandler {
     public ProblemDetail handleUserNotFound(UserNotFoundException ex){
         ProblemDetail problem = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, ex.getMessage());
         problem.setTitle("User Not Found");
+        return problem;
+    }
+
+
+    @ExceptionHandler(CategoryNotFoundException.class)
+    public ProblemDetail handleCategoryNotFound(CategoryNotFoundException ex){
+        ProblemDetail problem = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, ex.getMessage());
+        problem.setTitle("Category not found");
+        return problem;
+    }
+
+    @ExceptionHandler(CategoryAlreadyExistsException.class)
+    public ProblemDetail handleCategoryAlreadyExists(CategoryAlreadyExistsException ex) {
+        ProblemDetail problem = ProblemDetail.forStatusAndDetail(HttpStatus.CONFLICT, ex.getMessage());
+        problem.setTitle("Category already exists");
         return problem;
     }
 }

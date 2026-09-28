@@ -3,7 +3,6 @@ package com.akiratochiro.life_and_money_api.user;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.hibernate.internal.util.Optional;
 
 @Service
 public class UserService {
