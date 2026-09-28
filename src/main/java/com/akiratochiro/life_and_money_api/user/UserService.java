@@ -3,6 +3,7 @@ package com.akiratochiro.life_and_money_api.user;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.hibernate.internal.util.Optional;
 
 @Service
 public class UserService {
@@ -26,6 +27,18 @@ public class UserService {
         String passwordHash = passwordEncoder.encode(rawPassword);
         User user = new User(name, normalizedEmail, passwordHash);
         return userRepository.save(user);
+    }
+
+    @Transactional(readOnly = true)
+    public User authenticate(String email, String rawPassword) {
+        User user = userRepository.findByEmail(User.normalizeEmail(email))
+                .orElseThrow(InvalidCredentialsException::new);
+
+        if (!passwordEncoder.matches(rawPassword, user.getPasswordHash())) {
+            throw new InvalidCredentialsException();
+        }
+
+        return user;
     }
 
 }

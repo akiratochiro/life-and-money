@@ -1,9 +1,9 @@
 package com.akiratochiro.life_and_money_api.shared;
 
 import com.akiratochiro.life_and_money_api.user.EmailAlreadyInUseException;
+import com.akiratochiro.life_and_money_api.user.InvalidCredentialsException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ProblemDetail;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -12,6 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
+import javax.security.auth.login.CredentialException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,6 +50,12 @@ public class GlobalExceptionHandler {
                 "The request conflicts with existing data."
         );
         problem.setTitle("Data conflict");
+        return problem;
+    }
+    @ExceptionHandler(InvalidCredentialsException.class)
+    public ProblemDetail handleInvalidCredentials(InvalidCredentialsException ex) {
+        ProblemDetail problem = ProblemDetail.forStatusAndDetail(HttpStatus.UNAUTHORIZED, ex.getMessage());
+        problem.setTitle("Authentication failed");
         return problem;
     }
 }

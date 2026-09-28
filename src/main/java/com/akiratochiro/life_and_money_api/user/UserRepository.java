@@ -1,7 +1,7 @@
 package com.akiratochiro.life_and_money_api.user;
-import org.hibernate.internal.util.Optional;
-import org.springframework.data.jpa.repository.JpaRepository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.Optional;
 
 interface UserRepository extends JpaRepository<User, Long> {
 

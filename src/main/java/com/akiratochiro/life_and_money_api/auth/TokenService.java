@@ -23,7 +23,7 @@ class TokenService {
         this.expiration = expiration;
     }
 
-    String generateToken(User user) {
+    TokenResponse generateToken(User user) {
         Instant now = Instant.now();
 
         JwtClaimsSet claims = JwtClaimsSet.builder()
@@ -35,6 +35,7 @@ class TokenService {
 
         JwsHeader header = JwsHeader.with(MacAlgorithm.HS256).build();
 
-        return jwtEncoder.encode(JwtEncoderParameters.from(header, claims)).getTokenValue();
+        String token = jwtEncoder.encode(JwtEncoderParameters.from(header, claims)).getTokenValue();
+        return new TokenResponse(token, "Bearer", expiration.toSeconds());
     }
 }

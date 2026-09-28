@@ -12,8 +12,9 @@ public class AuthController {
 
     private final UserService userService;
 
-    public AuthController(UserService userService) {
+    public AuthController(UserService userService, TokenService tokenService) {
         this.userService = userService;
+        this.tokenService = tokenService;
     }
 
     @PostMapping("/register")
@@ -21,5 +22,13 @@ public class AuthController {
     public UserResponse register(@Valid @RequestBody RegisterRequest request) {
         User user = userService.register(request.name(), request.email(), request.password());
         return UserResponse.from(user);
+    }
+
+    private final TokenService tokenService;
+
+    @PostMapping("/login")
+    public TokenResponse login(@Valid @RequestBody LoginRequest request) {
+        User user = userService.authenticate(request.email(), request.password());
+        return tokenService.generateToken(user);
     }
 }
