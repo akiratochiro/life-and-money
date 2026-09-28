@@ -1,5 +1,6 @@
 package com.akiratochiro.life_and_money_api.user;
 
+import com.akiratochiro.life_and_money_api.shared.CurrentUser;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +19,7 @@ public class UserController {
 
     @GetMapping("/me")
     public UserResponse me(@AuthenticationPrincipal Jwt jwt) {
-        Long userId = Long.valueOf(jwt.getSubject());
+        Long userId = CurrentUser.id(jwt);
         User user = userService.findById(userId);
         return UserResponse.from(user);
     }
