@@ -42,7 +42,7 @@ public class Transaction {
         return userId;
     }
 
-    public Long getCategotyId() {
+    public Long getCategoryId() {
         return categoryId;
     }
 

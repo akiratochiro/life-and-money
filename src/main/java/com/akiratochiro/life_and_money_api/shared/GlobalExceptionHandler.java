@@ -1,7 +1,9 @@
 package com.akiratochiro.life_and_money_api.shared;
 
 import com.akiratochiro.life_and_money_api.category.CategoryAlreadyExistsException;
+import com.akiratochiro.life_and_money_api.category.CategoryArchivedException;
 import com.akiratochiro.life_and_money_api.category.CategoryNotFoundException;
+import com.akiratochiro.life_and_money_api.transaction.TransactionNotFoundException;
 import com.akiratochiro.life_and_money_api.user.EmailAlreadyInUseException;
 import com.akiratochiro.life_and_money_api.user.InvalidCredentialsException;
 import com.akiratochiro.life_and_money_api.user.UserNotFoundException;
@@ -82,6 +84,20 @@ public class GlobalExceptionHandler {
     public ProblemDetail handleCategoryAlreadyExists(CategoryAlreadyExistsException ex) {
         ProblemDetail problem = ProblemDetail.forStatusAndDetail(HttpStatus.CONFLICT, ex.getMessage());
         problem.setTitle("Category already exists");
+        return problem;
+    }
+
+    @ExceptionHandler(CategoryArchivedException.class)
+    public ProblemDetail handleCategoryArchived(CategoryArchivedException ex) {
+        ProblemDetail problem = ProblemDetail.forStatusAndDetail(HttpStatus.CONFLICT, ex.getMessage());
+        problem.setTitle("Category archived");
+        return problem;
+    }
+
+    @ExceptionHandler(TransactionNotFoundException.class)
+    public ProblemDetail handleTransactionNotFound(TransactionNotFoundException ex){
+        ProblemDetail problem = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, ex.getMessage());
+        problem.setTitle("Transaction not found");
         return problem;
     }
 }
