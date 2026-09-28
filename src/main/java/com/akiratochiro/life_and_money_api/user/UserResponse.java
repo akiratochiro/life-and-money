@@ -1,6 +1,5 @@
-package com.akiratochiro.life_and_money_api.auth;
+package com.akiratochiro.life_and_money_api.user;
 
-import com.akiratochiro.life_and_money_api.user.User;
 import java.time.Instant;
 
 public record UserResponse(Long id, String name, String email, Instant createdAt) {

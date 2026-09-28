@@ -2,7 +2,9 @@ package com.akiratochiro.life_and_money_api.shared;
 
 import com.akiratochiro.life_and_money_api.user.EmailAlreadyInUseException;
 import com.akiratochiro.life_and_money_api.user.InvalidCredentialsException;
+import com.akiratochiro.life_and_money_api.user.UserNotFoundException;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -56,6 +58,13 @@ public class GlobalExceptionHandler {
     public ProblemDetail handleInvalidCredentials(InvalidCredentialsException ex) {
         ProblemDetail problem = ProblemDetail.forStatusAndDetail(HttpStatus.UNAUTHORIZED, ex.getMessage());
         problem.setTitle("Authentication failed");
+        return problem;
+    }
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public ProblemDetail handleUserNotFound(UserNotFoundException ex){
+        ProblemDetail problem = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, ex.getMessage());
+        problem.setTitle("User Not Found");
         return problem;
     }
 }

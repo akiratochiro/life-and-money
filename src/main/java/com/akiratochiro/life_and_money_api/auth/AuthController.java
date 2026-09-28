@@ -1,6 +1,7 @@
 package com.akiratochiro.life_and_money_api.auth;
 
 import com.akiratochiro.life_and_money_api.user.User;
+import com.akiratochiro.life_and_money_api.user.UserResponse;
 import com.akiratochiro.life_and_money_api.user.UserService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
