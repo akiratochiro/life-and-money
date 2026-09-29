@@ -1,6 +1,7 @@
 package com.akiratochiro.life_and_money_api.transaction;
 
 import com.akiratochiro.life_and_money_api.category.CategoryService;
+import com.akiratochiro.life_and_money_api.category.CategoryType;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -57,5 +58,11 @@ public class TransactionService {
     public void delete(Long userId, Long transactionId){
         Transaction transaction = findOwned(userId, transactionId);
         transactionRepository.delete(transaction);
+    }
+
+    @Transactional(readOnly = true)
+    public List<CategoryTotal> sumExpensesByCategory(Long userId, YearMonth month) {
+        return transactionRepository.sumByCategory(
+                userId, CategoryType.EXPENSE, month.atDay(1), month.atEndOfMonth());
     }
 }
