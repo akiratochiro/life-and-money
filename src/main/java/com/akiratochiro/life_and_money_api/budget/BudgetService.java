@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 import java.time.Clock;
 import java.time.YearMonth;
+import java.util.List;
 
 @Service
 public class BudgetService {
@@ -59,4 +60,10 @@ public class BudgetService {
         }
         budgetItemRepository.flush();
     }
+
+    @Transactional(readOnly = true)
+    public List<BudgetItem> listForMonth(Long userId, YearMonth month) {
+        return budgetItemRepository.findAllValidInMonth(userId, month.atDay(1));
+    }
+
 }
