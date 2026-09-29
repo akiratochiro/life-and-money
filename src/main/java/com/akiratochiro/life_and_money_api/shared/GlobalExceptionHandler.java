@@ -1,5 +1,7 @@
 package com.akiratochiro.life_and_money_api.shared;
 
+import com.akiratochiro.life_and_money_api.budget.BudgetItemNotFoundException;
+import com.akiratochiro.life_and_money_api.budget.IncomeCategoryBudgetException;
 import com.akiratochiro.life_and_money_api.category.CategoryAlreadyExistsException;
 import com.akiratochiro.life_and_money_api.category.CategoryArchivedException;
 import com.akiratochiro.life_and_money_api.category.CategoryNotFoundException;
@@ -98,6 +100,20 @@ public class GlobalExceptionHandler {
     public ProblemDetail handleTransactionNotFound(TransactionNotFoundException ex){
         ProblemDetail problem = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, ex.getMessage());
         problem.setTitle("Transaction not found");
+        return problem;
+    }
+
+    @ExceptionHandler(IncomeCategoryBudgetException.class)
+    public ProblemDetail handleIncomeCategoryBudget(IncomeCategoryBudgetException ex){
+        ProblemDetail problem = ProblemDetail.forStatusAndDetail(HttpStatus.UNPROCESSABLE_CONTENT, ex.getMessage());
+        problem.setTitle("Invalid budget category");
+        return problem;
+    }
+
+    @ExceptionHandler(BudgetItemNotFoundException.class)
+    public ProblemDetail handleBudgetItemNotFound(BudgetItemNotFoundException ex){
+        ProblemDetail problem = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, ex.getMessage());
+        problem.setTitle("Budget item not found");
         return problem;
     }
 }
