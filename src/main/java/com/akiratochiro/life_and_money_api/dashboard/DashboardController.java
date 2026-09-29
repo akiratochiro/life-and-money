@@ -3,6 +3,8 @@ package com.akiratochiro.life_and_money_api.dashboard;
 
 import com.akiratochiro.life_and_money_api.budget.BudgetItemResponse;
 import com.akiratochiro.life_and_money_api.shared.CurrentUser;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.*;
@@ -27,4 +29,12 @@ public class DashboardController {
 
         return dashboardService.expensesByCategory(CurrentUser.id(jwt), month);
     }
+
+    @GetMapping("/monthly-totals")
+    public MonthlyTotalsResponse monthlyTotals(@AuthenticationPrincipal Jwt jwt,
+                                               @RequestParam(defaultValue = "6") @Min(1) @Max(24) int months){
+        return dashboardService.monthlyTotals(CurrentUser.id(jwt), months);
+    }
+
+
 }

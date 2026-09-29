@@ -28,4 +28,22 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long>{
                                       @Param("type") CategoryType type,
                                       @Param("start") LocalDate start,
                                       @Param("end") LocalDate end);
+
+    @Query("""
+        select new com.akiratochiro.life_and_money_api.transaction.MonthlyTypeTotal(
+            extract(year from t.transactionDate),
+            extract(month from t.transactionDate),
+            c.type,
+            sum(t.amount))
+        from Transaction t
+        join Category c on c.id = t.categoryId
+        where t.userId = :userId
+          and t.transactionDate between :start and :end
+        group by extract(year from t.transactionDate),
+                 extract(month from t.transactionDate),
+                 c.type
+        """)
+    List<MonthlyTypeTotal> sumByMonthAndType(@Param("userId") Long userId,
+                                             @Param("start") LocalDate start,
+                                             @Param("end") LocalDate end);
 }

@@ -65,4 +65,9 @@ public class TransactionService {
         return transactionRepository.sumByCategory(
                 userId, CategoryType.EXPENSE, month.atDay(1), month.atEndOfMonth());
     }
+
+    @Transactional(readOnly = true)
+    public List<MonthlyTypeTotal> sumByMonthAndType(Long userId, YearMonth from, YearMonth to) {
+        return transactionRepository.sumByMonthAndType(userId, from.atDay(1), to.atEndOfMonth());
+    }
 }
