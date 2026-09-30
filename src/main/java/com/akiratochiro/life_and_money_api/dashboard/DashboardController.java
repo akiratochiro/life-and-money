@@ -36,5 +36,11 @@ public class DashboardController {
         return dashboardService.monthlyTotals(CurrentUser.id(jwt), months);
     }
 
+    @GetMapping("/budget")
+    public BudgetDashboardResponse budgetDashboard(@AuthenticationPrincipal Jwt jwt,
+                                 @RequestParam YearMonth month){
+        return dashboardService.budget(CurrentUser.id(jwt), month);
+    }
+
 
 }
