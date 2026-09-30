@@ -20,6 +20,7 @@ public class Transaction {
     private String description;
     private Instant createdAt;
     private Instant updatedAt;
+    private Long goalId;
 
     protected Transaction(){}
 
@@ -65,6 +66,8 @@ public class Transaction {
     public Instant getUpdatedAt() {
         return updatedAt;
     }
+
+    public Long getGoalId(){ return goalId;}
 
     public void update(Long categoryId, BigDecimal amount, LocalDate transactionDate, String description){
         this.categoryId = categoryId;
