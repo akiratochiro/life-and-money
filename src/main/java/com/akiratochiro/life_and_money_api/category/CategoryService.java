@@ -71,4 +71,9 @@ public class CategoryService {
         }
         return category;
     }
+
+    @Transactional(readOnly = true)
+    public Category getOwned(Long userId, Long categoryId) {
+        return findOwned(userId, categoryId);
+    }
 }

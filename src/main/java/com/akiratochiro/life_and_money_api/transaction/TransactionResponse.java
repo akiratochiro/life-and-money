@@ -10,6 +10,7 @@ import java.time.LocalDate;
 public record TransactionResponse(
         Long id,
         Long categoryId,
+        Long goalId,
         BigDecimal amount,
         LocalDate transactionDate,
         String description,
@@ -20,6 +21,7 @@ public record TransactionResponse(
         return new TransactionResponse(
                 transaction.getId(),
                 transaction.getCategoryId(),
+                transaction.getGoalId(),
                 transaction.getAmount(),
                 transaction.getTransactionDate(),
                 transaction.getDescription(),

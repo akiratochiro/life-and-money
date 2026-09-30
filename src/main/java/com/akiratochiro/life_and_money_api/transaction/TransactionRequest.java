@@ -10,6 +10,7 @@ import java.time.LocalDate;
 
 public record TransactionRequest(
         @NotNull Long categoryId,
+        Long goalId,
         @NotNull @Positive @Digits(integer = 17, fraction = 2) BigDecimal amount,
         @NotNull LocalDate transactionDate,
         @Size(max = 255) String description

@@ -24,9 +24,10 @@ public class Transaction {
 
     protected Transaction(){}
 
-    public Transaction(Long userId, Long categoryId, BigDecimal amount, LocalDate transactionDate, String description){
+    public Transaction(Long userId, Long categoryId, Long goalId, BigDecimal amount, LocalDate transactionDate, String description){
         this.userId = userId;
         this.categoryId = categoryId;
+        this.goalId = goalId;
         this.amount = amount;
         this.transactionDate = transactionDate;
         this.description = normalizeDescription(description);
@@ -69,8 +70,9 @@ public class Transaction {
 
     public Long getGoalId(){ return goalId;}
 
-    public void update(Long categoryId, BigDecimal amount, LocalDate transactionDate, String description){
+    public void update(Long categoryId, Long goalId, BigDecimal amount, LocalDate transactionDate, String description){
         this.categoryId = categoryId;
+        this.goalId = goalId;
         this.amount = amount;
         this.transactionDate = transactionDate;
         this.description = normalizeDescription(description);

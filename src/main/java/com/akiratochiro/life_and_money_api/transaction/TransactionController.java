@@ -25,7 +25,7 @@ public class TransactionController {
     public TransactionResponse create(@AuthenticationPrincipal Jwt jwt,
                                       @Valid @RequestBody TransactionRequest request) {
         Transaction transaction = transactionService.create(CurrentUser.id(jwt),
-                request.categoryId(), request.amount(), request.transactionDate(), request.description());
+                request.categoryId(), request.goalId(), request.amount(), request.transactionDate(), request.description());
         return TransactionResponse.from(transaction);
     }
 
@@ -42,7 +42,7 @@ public class TransactionController {
                                       @PathVariable Long id,
                                       @Valid @RequestBody TransactionRequest request) {
         Transaction transaction = transactionService.update(CurrentUser.id(jwt), id,
-                request.categoryId(), request.amount(), request.transactionDate(), request.description());
+                request.categoryId(), request.goalId(), request.amount(), request.transactionDate(), request.description());
         return TransactionResponse.from(transaction);
     }
 
