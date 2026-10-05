@@ -5,6 +5,7 @@ import com.akiratochiro.life_and_money_api.budget.IncomeCategoryBudgetException;
 import com.akiratochiro.life_and_money_api.category.CategoryAlreadyExistsException;
 import com.akiratochiro.life_and_money_api.category.CategoryArchivedException;
 import com.akiratochiro.life_and_money_api.category.CategoryNotFoundException;
+import com.akiratochiro.life_and_money_api.goal.InvalidGoalDeadlineException;
 import com.akiratochiro.life_and_money_api.transaction.TransactionNotFoundException;
 import com.akiratochiro.life_and_money_api.user.EmailAlreadyInUseException;
 import com.akiratochiro.life_and_money_api.user.InvalidCredentialsException;
@@ -114,6 +115,13 @@ public class GlobalExceptionHandler {
     public ProblemDetail handleBudgetItemNotFound(BudgetItemNotFoundException ex){
         ProblemDetail problem = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, ex.getMessage());
         problem.setTitle("Budget item not found");
+        return problem;
+    }
+
+    @ExceptionHandler(InvalidGoalDeadlineException.class)
+    public ProblemDetail handleInvalidGoalDeadline(InvalidGoalDeadlineException ex) {
+        ProblemDetail problem = ProblemDetail.forStatusAndDetail(HttpStatus.UNPROCESSABLE_CONTENT, ex.getMessage());
+        problem.setTitle("Invalid goal deadline");
         return problem;
     }
 }

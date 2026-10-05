@@ -46,6 +46,7 @@ WITH goal AS (
     VALUES (:uid, 'Entrada do apartamento', 30000.00, DATE '2027-12-31')
     RETURNING id
 )
+
 INSERT INTO transactions (user_id, category_id, goal_id, amount, transaction_date, description)
 SELECT :uid,
        c.id,

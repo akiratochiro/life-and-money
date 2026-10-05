@@ -11,6 +11,8 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class TransactionService {
@@ -90,6 +92,14 @@ public class TransactionService {
     @Transactional(readOnly = true)
     public List<MonthlyTypeTotal> sumByMonthAndType(Long userId, YearMonth from, YearMonth to) {
         return transactionRepository.sumByMonthAndType(userId, from.atDay(1), to.atEndOfMonth());
+    }
+
+
+
+    @Transactional(readOnly = true)
+    public Map<Long, BigDecimal> savedByGoal(Long userId) {
+        return transactionRepository.sumByGoal(userId).stream()
+                .collect(Collectors.toMap(GoalTotal::goalId, GoalTotal::total));
     }
 
 

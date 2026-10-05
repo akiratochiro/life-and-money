@@ -46,4 +46,16 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long>{
     List<MonthlyTypeTotal> sumByMonthAndType(@Param("userId") Long userId,
                                              @Param("start") LocalDate start,
                                              @Param("end") LocalDate end);
+
+
+
+
+    @Query("""
+        select new com.akiratochiro.life_and_money_api.transaction.GoalTotal(t.goalId, sum(t.amount))
+        from Transaction t
+        where t.userId = :userId
+          and t.goalId is not null
+        group by t.goalId
+        """)
+    List<GoalTotal> sumByGoal(@Param("userId") Long userId);
 }
