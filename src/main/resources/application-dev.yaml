@@ -2,3 +2,6 @@ logging:
   level:
     org.hibernate.SQL: debug
 #    org.springframework.security: debug
+spring:
+  config:
+    import: optional:file:.env[.properties]
