@@ -1,0 +1,245 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 100663296 bytes. Error detail: G1 virtual space
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   This process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Unscaled Compressed Oops mode in which the Java heap is
+#     placed in the first 4GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 4GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_windows.cpp:3732), pid=57452, tid=14744
+#
+# JRE version:  (21.0.12.1+9) (build )
+# Java VM: OpenJDK 64-Bit Server VM (21.0.12.1+9-LTS, mixed mode, emulated-client, sharing, tiered, compressed oops, compressed class ptrs, g1 gc, windows-amd64)
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -XX:TieredStopAtLevel=1 -Dspring.output.ansi.enabled=always -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2026.2.3\lib\idea_rt.jar=51217 -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 com.akiratochiro.life_and_money_api.LifeAndMoneyApiApplication
+
+Host: AMD Ryzen 5 3500U with Radeon Vega Mobile Gfx  , 8 cores, 5G,  Windows 11 , 64 bit Build 26100 (10.0.26100.9444)
+Time: Thu Oct  1 10:27:11 2026 Hora oficial do Brasil elapsed time: 0.060412 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000001d497ec5d90):  JavaThread "Unknown thread" [_thread_in_vm, id=14744, stack(0x000000ad94c00000,0x000000ad94d00000) (1024K)]
+
+Stack: [0x000000ad94c00000,0x000000ad94d00000]
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x6e0e29]
+V  [jvm.dll+0x8bdddb]
+V  [jvm.dll+0x8c036d]
+V  [jvm.dll+0x8c0a43]
+V  [jvm.dll+0x28b406]
+V  [jvm.dll+0x6dd785]
+V  [jvm.dll+0x6d151a]
+V  [jvm.dll+0x365fce]
+V  [jvm.dll+0x36de9b]
+V  [jvm.dll+0x3bfa49]
+V  [jvm.dll+0x3bfceb]
+V  [jvm.dll+0x339df7]
+V  [jvm.dll+0x33a941]
+V  [jvm.dll+0x88835e]
+V  [jvm.dll+0x3cc9a1]
+V  [jvm.dll+0x87124c]
+V  [jvm.dll+0x45fe11]
+V  [jvm.dll+0x461a51]
+C  [jli.dll+0x52f4]
+C  [ucrtbase.dll+0x2cd30]
+C  [KERNEL32.DLL+0x2cd87]
+C  [ntdll.dll+0xacaec]
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x00007ffb6fcf4208, length=0, elements={
+}
+
+Java Threads: ( => current thread )
+Total: 0
+
+Other Threads:
+  0x000001d497f0dcf0 WorkerThread "GC Thread#0"                     [id=76424, stack(0x000000ad94d00000,0x000000ad94e00000) (1024K)]
+  0x000001d497f1ab60 ConcurrentGCThread "G1 Main Marker"            [id=77700, stack(0x000000ad94e00000,0x000000ad94f00000) (1024K)]
+  0x000001d497f1db40 WorkerThread "G1 Conc#0"                       [id=76924, stack(0x000000ad94f00000,0x000000ad95000000) (1024K)]
+
+[error occurred during error reporting (printing all threads), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffb6f3ecb97]
+VM state: not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x00007ffb6fd686c0] Heap_lock - owner thread: 0x000001d497ec5d90
+
+Heap address: 0x00000000a0c00000, size: 1524 MB, Compressed Oops mode: 32-bit
+
+CDS archive(s) mapped at: [0x0000000000000000-0x0000000000000000-0x0000000000000000), size 0, SharedBaseAddress: 0x0000000800000000, ArchiveRelocationMode: 1.
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 0, Narrow klass range: 0x0
+
+GC Precious Log:
+ CardTable entry size: 512
+ Card Set container configuration: InlinePtr #cards 5 size 8 Array Of Cards #cards 12 size 40 Howl #buckets 4 coarsen threshold 1843 Howl Bitmap #cards 512 size 80 coarsen threshold 460 Card regions per heap region 1 cards per card region 2048
+
+Heap:
+ garbage-first heap   total 0K, used 0K [0x00000000a0c00000, 0x0000000100000000)
+  region size 1024K, 0 young (0K), 0 survivors (0K)
+
+[error occurred during error reporting (printing heap information), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffb6f7dab59]
+GC Heap History (0 events):
+No events
+
+Dll operation events (2 events):
+Event: 0.034 Attempting to load shared library C:\Users\akira\.jdks\corretto-21.0.12.1\bin\java.dll
+Event: 0.034 Loaded shared library C:\Users\akira\.jdks\corretto-21.0.12.1\bin\java.dll
+
+Deoptimization events (0 events):
+No events
+
+Classes loaded (0 events):
+No events
+
+Classes unloaded (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+ZGC Phase Switch (0 events):
+No events
+
+VM Operations (0 events):
+No events
+
+Memory protections (0 events):
+No events
+
+Nmethod flushes (0 events):
+No events
+
+Events (0 events):
+No events
+
+
+Dynamic libraries:
+0x00007ff718830000 - 0x00007ff71883e000 	C:\Users\akira\.jdks\corretto-21.0.12.1\bin\java.exe
+0x00007ffbff080000 - 0x00007ffbff2e7000 	C:\WINDOWS\SYSTEM32\ntdll.dll
+0x00007ffbfd990000 - 0x00007ffbfda5b000 	C:\WINDOWS\System32\KERNEL32.DLL
+0x00007ffbfc3d0000 - 0x00007ffbfc7d2000 	C:\WINDOWS\System32\KERNELBASE.dll
+0x00007ffbfc950000 - 0x00007ffbfca9c000 	C:\WINDOWS\System32\ucrtbase.dll
+0x00007ffbf62e0000 - 0x00007ffbf62f8000 	C:\Users\akira\.jdks\corretto-21.0.12.1\bin\jli.dll
+0x00007ffbf8150000 - 0x00007ffbf816e000 	C:\Users\akira\.jdks\corretto-21.0.12.1\bin\VCRUNTIME140.dll
+0x00007ffbfdbd0000 - 0x00007ffbfdd9f000 	C:\WINDOWS\System32\USER32.dll
+0x00007ffbe9160000 - 0x00007ffbe93f0000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.26100.9278_none_3e0d1ba8e3303201\COMCTL32.dll
+0x00007ffbfcab0000 - 0x00007ffbfcad7000 	C:\WINDOWS\System32\win32u.dll
+0x00007ffbfd3f0000 - 0x00007ffbfd499000 	C:\WINDOWS\System32\msvcrt.dll
+0x00007ffbfe030000 - 0x00007ffbfe05b000 	C:\WINDOWS\System32\GDI32.dll
+0x00007ffbfcc70000 - 0x00007ffbfcd99000 	C:\WINDOWS\System32\gdi32full.dll
+0x00007ffbfc7e0000 - 0x00007ffbfc883000 	C:\WINDOWS\System32\msvcp_win.dll
+0x00007ffbfdff0000 - 0x00007ffbfe021000 	C:\WINDOWS\System32\IMM32.DLL
+0x00007ffbf8140000 - 0x00007ffbf814c000 	C:\Users\akira\.jdks\corretto-21.0.12.1\bin\vcruntime140_1.dll
+0x00007ffbd2eb0000 - 0x00007ffbd2f39000 	C:\Users\akira\.jdks\corretto-21.0.12.1\bin\msvcp140.dll
+0x00007ffb6f0a0000 - 0x00007ffb6fe4a000 	C:\Users\akira\.jdks\corretto-21.0.12.1\bin\server\jvm.dll
+0x00007ffbfd630000 - 0x00007ffbfd6ec000 	C:\WINDOWS\System32\ADVAPI32.dll
+0x00007ffbfda60000 - 0x00007ffbfdb09000 	C:\WINDOWS\System32\sechost.dll
+0x00007ffbfce30000 - 0x00007ffbfcf48000 	C:\WINDOWS\System32\RPCRT4.dll
+0x00007ffbfcda0000 - 0x00007ffbfce20000 	C:\WINDOWS\System32\WS2_32.dll
+0x00007ffbf6300000 - 0x00007ffbf6336000 	C:\WINDOWS\SYSTEM32\WINMM.dll
+0x00007ffbf8740000 - 0x00007ffbf874b000 	C:\WINDOWS\SYSTEM32\VERSION.dll
+0x00007ffbfc0e0000 - 0x00007ffbfc13e000 	C:\WINDOWS\SYSTEM32\POWRPROF.dll
+0x00007ffbfc0c0000 - 0x00007ffbfc0d5000 	C:\WINDOWS\SYSTEM32\UMPDC.dll
+0x00007ffbfaa60000 - 0x00007ffbfaa7b000 	C:\WINDOWS\SYSTEM32\kernel.appcore.dll
+0x00007ffbf6200000 - 0x00007ffbf620a000 	C:\Users\akira\.jdks\corretto-21.0.12.1\bin\jimage.dll
+0x00007ffbed3c0000 - 0x00007ffbed60c000 	C:\WINDOWS\SYSTEM32\DBGHELP.DLL
+0x00007ffbfd060000 - 0x00007ffbfd3e5000 	C:\WINDOWS\System32\combase.dll
+0x00007ffbfd550000 - 0x00007ffbfd629000 	C:\WINDOWS\System32\OLEAUT32.dll
+0x00007ffbe8890000 - 0x00007ffbe88cb000 	C:\WINDOWS\SYSTEM32\dbgcore.DLL
+0x00007ffbfc890000 - 0x00007ffbfc93c000 	C:\WINDOWS\System32\bcryptPrimitives.dll
+0x00007ffbf61a0000 - 0x00007ffbf61b0000 	C:\Users\akira\.jdks\corretto-21.0.12.1\bin\instrument.dll
+0x00007ffbf61d0000 - 0x00007ffbf61f1000 	C:\Users\akira\.jdks\corretto-21.0.12.1\bin\java.dll
+
+JVMTI agents:
+C:\Program Files\JetBrains\IntelliJ IDEA 2026.2.3\lib\idea_rt.jar path:none, loaded, not initialized, instrumentlib options:51217
+
+dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
+symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;C:\Users\akira\.jdks\corretto-21.0.12.1\bin;C:\WINDOWS\SYSTEM32;C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.26100.9278_none_3e0d1ba8e3303201;C:\Users\akira\.jdks\corretto-21.0.12.1\bin\server
+
+VM Arguments:
+jvm_args: -XX:TieredStopAtLevel=1 -Dspring.output.ansi.enabled=always -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2026.2.3\lib\idea_rt.jar=51217 -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 
+java_command: com.akiratochiro.life_and_money_api.LifeAndMoneyApiApplication
+java_class_path (initial): C:\Users\akira\Desktop\Projects\life-and-money\target\classes;C:\Users\akira\.m2\repository\org\springframework\boot\spring-boot-starter-data-jpa\4.1.1\spring-boot-starter-data-jpa-4.1.1.jar;C:\Users\akira\.m2\repository\org\springframework\boot\spring-boot-starter\4.1.1\spring-boot-starter-4.1.1.jar;C:\Users\akira\.m2\repository\org\springframework\boot\spring-boot-starter-logging\4.1.1\spring-boot-starter-logging-4.1.1.jar;C:\Users\akira\.m2\repository\ch\qos\logback\logback-classic\1.5.38\logback-classic-1.5.38.jar;C:\Users\akira\.m2\repository\ch\qos\logback\logback-core\1.5.38\logback-core-1.5.38.jar;C:\Users\akira\.m2\repository\org\apache\logging\log4j\log4j-to-slf4j\2.25.5\log4j-to-slf4j-2.25.5.jar;C:\Users\akira\.m2\repository\org\apache\logging\log4j\log4j-api\2.25.5\log4j-api-2.25.5.jar;C:\Users\akira\.m2\repository\org\slf4j\jul-to-slf4j\2.0.18\jul-to-slf4j-2.0.18.jar;C:\Users\akira\.m2\repository\jakarta\annotation\jakarta.annotation-api\3.0.0\jakarta.annotation-api-3.0.0.jar;C:\Users\akira\.m2\repository\org\yaml\snakeyaml\2.6\snakeyaml-2.6.jar;C:\Users\akira\.m2\repository\org\springframework\boot\spring-boot-starter-jdbc\4.1.1\spring-boot-starter-jdbc-4.1.1.jar;C:\Users\akira\.m2\repository\com\zaxxer\HikariCP\7.0.2\HikariCP-7.0.2.jar;C:\Users\akira\.m2\repository\org\slf4j\slf4j-api\2.0.18\slf4j-api-2.0.18.jar;C:\Users\akira\.m2\repository\org\springframework\boot\spring-boot-data-jpa\4.1.1\spring-boot-data-jpa-4.1.1.jar;C:\Users\akira\.m2\repository\org\springframework\boot\spring-boot-data-commons\4.1.1\spring-boot-data-commons-4.1.1.jar;C:\Users\akira\.m2\repository\org\springframework\boot\spring-boot-persistence\4.1.1\spring-boot-persistence-4.1.1.jar;C:\Users\akira\.m2\repository\org\springframework\data\spring-data-commons\4.1.1\spring-data-commons-4.1.1.jar;C:\Users\akira\.m2\repository\org\springframework\boot\spring-boot-hibernate\4.1.1\spring-boot-hibernate-4.1.1.jar;C:\Users\akira\.m2\repository\org\springframework\boot\spring-boot-jpa\4.1.1\spring-boot-jpa-4.1.1.jar;C:\Users\akira\.m2\repository\jakarta\persistence\jakarta.persistence-api\3.2.0\jakarta.persistence-api-3.2.0.jar;C:\Users\akira\.m2\repository\org\hibernate\orm\hibernate-core\7.4.5.Final\hibernate-core-7.4.5.Final.jar;C:\Users\akira\.m2\repository\jakarta\transaction\jakarta.transaction-api\2.0.1\jakarta.transaction-api-2.0.1.jar;C:\Users\akira\.m2\repository\org\hibernate\models\hibernate-models\1.1.1\hibernate-models-1.1.1.jar;C:\Users\akira\.m2\repository\org\glassfish\jaxb\jaxb-runtime\4.0.9\jaxb-runtime-4.0.9.jar;C:\Users\akira\.m2\repository\org\glassfish\jaxb\jaxb-core\4.0.9\jaxb-core-4.0.9.jar;C:\Users\akira\.m2\repository\org\eclipse\angus\angus-activation\2.0.3\angus-activation-2.0.3.jar;C:\Users\akira\.m2\repository\org\glassfish\jaxb\txw2\4.0.9\txw2-4.0.9.jar;C:\Users\akira\.m2\repository\com\sun\istack\istack-commons-runtime\4.1.2\istack-commons-runtime-4.1.2.jar;C:\Users\akira\.m2\repository\jakarta\inject\jakarta.inject-api\2.0.1\jakarta.inject-api-2.0.1.jar;C:\Users\akira\.m2\repository\org\springframework\spring-orm\7.0.9\spring-orm-7.0.9.jar;C:\Users\akira\.m2\repository\org\springframework\data\spring-data-jpa\4.1.1\spring-data-jpa-4.1.1.jar;C:\Users\akira\.m2\repository\org\springframework\spring-context\7.0.9\spring-context-7.0.9.jar;C:\Users\akira\.m2\repository\org\springframework\spring-tx\7.0.9\spring-tx-7.0.9.jar;C:\Users\akira\.m2\repository\org\antlr\antlr4-runtime\4.13.2\antlr4-runtime-4.13.2.jar;C:\Users\akira\.m2\repository\org\springframework\spring-aspects\7.0.9\spring-aspects-7.0.9.jar;C:\Users\akira\.m2\repository\org\aspectj\aspectjweaver\1.9.25.1\aspectjweaver-1.9.25.1.jar;C:\Users\akira\.m2\repository\org\springframework\boot\spring-boot-jdbc\4.1.1\spring-boot-jdbc-4.1.1.jar;C:\Users\akira\.m2\repository\org\springframework\boot\spring-boot\4.1.1\spring-boot-4.1.1.jar;C:\Users\akira\.m2\repository\org\springframework\boot\spring-boot-sql\4.1.1\spring-boot-sql-4.1.1.jar;C:\Users\akira\.m2\repository\org\springframework\boot\spring-boot-transaction\4.1.1\spring-boot-transaction-4.1.1.jar;C:\Users\akira\.m2\repository\org\springframework\spring-jdbc\7.0.9\spring-jdbc-7.0.9.jar;C:\Users\akira\.m2\repository\org\springframework\boot\spring-boot-starter-flyway\4.1.1\spring-boot-starter-flyway-4.1.1.jar;C:\Users\akira\.m2\repository\org\springframework\boot\spring-boot-flyway\4.1.1\spring-boot-flyway-4.1.1.jar;C:\Users\akira\.m2\repository\org\springframework\boot\spring-boot-starter-security\4.1.1\spring-boot-starter-security-4.1.1.jar;C:\Users\akira\.m2\repository\org\springframework\boot\spring-boot-security\4.1.1\spring-boot-security-4.1.1.jar;C:\Users\akira\.m2\repository\org\springframework\security\spring-security-config\7.1.1\spring-security-config-7.1.1.jar;C:\Users\akira\.m2\repository\org\springframework\security\spring-security-core\7.1.1\spring-security-core-7.1.1.jar;C:\Users\akira\.m2\repository\org\springframework\security\spring-security-crypto\7.1.1\spring-security-crypto-7.1.1.jar;C:\Users\akira\.m2\repository\org\springframework\security\spring-security-web\7.1.1\spring-security-web-7.1.1.jar;C:\Users\akira\.m2\repository\org\springframework\spring-expression\7.0.9\spring-expression-7.0.9.jar;C:\Users\akira\.m2\repository\org\springframework\spring-aop\7.0.9\spring-aop-7.0.9.jar;C:\Users\akira\.m2\repository\org\springframework\spring-beans\7.0.9\spring-beans-7.0.9.jar;C:\Users\akira\.m2\repository\org\springframework\spring-core\7.0.9\spring-core-7.0.9.jar;C:\Users\akira\.m2\repository\commons-logging\commons-logging\1.3.6\commons-logging-1.3.6.jar;C:\Users\akira\.m2\repository\org\jspecify\jspecify\1.0.1\jspecify-1.0.1.jar;C:\Users\akira\.m2\repository\org\springframework\boot\spring-boot-starter-validation\4.1.1\spring-boot-starter-validation-4.1.1.jar;C:\Users\akira\.m2\repository\org\springframework\boot\spring-boot-validation\4.1.1\spring-boot-validation-4.1.1.jar;C:\Users\akira\.m2\repository\org\apache\tomcat\embed\tomcat-embed-el\11.0.24\tomcat-embed-el-11.0.24.jar;C:\Users\akira\.m2\repository\org\hibernate\validator\hibernate-validator\9.1.3.Final\hibernate-validator-9.1.3.Final.jar;C:\Users\akira\.m2\repository\jakarta\validation\jakarta.validation-api\3.1.1\jakarta.validation-api-3.1.1.jar;C:\Users\akira\.m2\repository\org\jboss\logging\jboss-logging\3.6.3.Final\jboss-logging-3.6.3.Final.jar;C:\Users\akira\.m2\repository\com\fasterxml\classmate\1.7.3\classmate-1.7.3.jar;C:\Users\akira\.m2\repository\org\springframework\boot\spring-boot-starter-webmvc\4.1.1\spring-boot-starter-webmvc-4.1.1.jar;C:\Users\akira\.m2\repository\org\springframework\boot\spring-boot-starter-jackson\4.1.1\spring-boot-starter-jackson-4.1.1.jar;C:\Users\akira\.m2\repository\org\springframework\boot\spring-boot-jackson\4.1.1\spring-boot-jackson-4.1.1.jar;C:\Users\akira\.m2\repository\org\springframework\boot\spring-boot-starter-tomcat\4.1.1\spring-boot-starter-tomcat-4.1.1.jar;C:\Users\akira\.m2\repository\org\springframework\boot\spring-boot-starter-tomcat-runtime\4.1.1\spring-boot-starter-tomcat-runtime-4.1.1.jar;C:\Users\akira\.m2\repository\org\apache\tomcat\embed\tomcat-embed-core\11.0.24\tomcat-embed-core-11.0.24.jar;C:\Users\akira\.m2\repository\org\apache\tomcat\embed\tomcat-embed-websocket\11.0.24\tomcat-embed-websocket-11.0.24.jar;C:\Users\akira\.m2\repository\org\springframework\boot\spring-boot-tomcat\4.1.1\spring-boot-tomcat-4.1.1.jar;C:\Users\akira\.m2\repository\org\springframework\boot\spring-boot-http-converter\4.1.1\spring-boot-http-converter-4.1.1.jar;C:\Users\akira\.m2\repository\org\springframework\spring-web\7.0.9\spring-web-7.0.9.jar;C:\Users\akira\.m2\repository\io\micrometer\micrometer-observation\1.17.1\micrometer-observation-1.17.1.jar;C:\Users\akira\.m2\repository\io\micrometer\micrometer-commons\1.17.1\micrometer-commons-1.17.1.jar;C:\Users\akira\.m2\repository\org\springframework\boot\spring-boot-webmvc\4.1.1\spring-boot-webmvc-4.1.1.jar;C:\Users\akira\.m2\repository\org\springframework\boot\spring-boot-servlet\4.1.1\spring-boot-servlet-4.1.1.jar;C:\Users\akira\.m2\repository\org\springframework\spring-webmvc\7.0.9\spring-webmvc-7.0.9.jar;C:\Users\akira\.m2\repository\org\flywaydb\flyway-database-postgresql\12.4.0\flyway-database-postgresql-12.4.0.jar;C:\Users\akira\.m2\repository\org\flywaydb\flyway-core\12.4.0\flyway-core-12.4.0.jar;C:\Users\akira\.m2\repository\org\springframework\boot\spring-boot-docker-compose\4.1.1\spring-boot-docker-compose-4.1.1.jar;C:\Users\akira\.m2\repository\org\springframework\boot\spring-boot-autoconfigure\4.1.1\spring-boot-autoconfigure-4.1.1.jar;C:\Users\akira\.m2\repository\tools\jackson\core\jackson-databind\3.1.5\jackson-databind-3.1.5.jar;C:\Users\akira\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.21\jackson-annotations-2.21.jar;C:\Users\akira\.m2\repository\tools\jackson\core\jackson-core\3.1.5\jackson-core-3.1.5.jar;C:\Users\akira\.m2\repository\org\postgresql\postgresql\42.7.13\postgresql-42.7.13.jar;C:\Users\akira\.m2\repository\org\checkerframework\checker-qual\3.55.1\checker-qual-3.55.1.jar;C:\Users\akira\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\4.0.5\jakarta.xml.bind-api-4.0.5.jar;C:\Users\akira\.m2\repository\jakarta\activation\jakarta.activation-api\2.1.4\jakarta.activation-api-2.1.4.jar;C:\Users\akira\.m2\repository\net\bytebuddy\byte-buddy\1.18.11\byte-buddy-1.18.11.jar;C:\Users\akira\.m2\repository\org\springframework\boot\spring-boot-web-server\4.1.1\spring-boot-web-server-4.1.1.jar;C:\Users\akira\.m2\repository\org\springframework\boot\spring-boot-starter-security-oauth2-resource-server\4.1.1\spring-boot-starter-security-oauth2-resource-server-4.1.1.jar;C:\Users\akira\.m2\repository\org\springframework\boot\spring-boot-security-oauth2-resource-server\4.1.1\spring-boot-security-oauth2-resource-server-4.1.1.jar;C:\Users\akira\.m2\repository\org\springframework\security\spring-security-oauth2-jose\7.1.1\spring-security-oauth2-jose-7.1.1.jar;C:\Users\akira\.m2\repository\org\springframework\security\spring-security-oauth2-core\7.1.1\spring-security-oauth2-core-7.1.1.jar;C:\Users\akira\.m2\repository\com\nimbusds\nimbus-jose-jwt\10.9.1\nimbus-jose-jwt-10.9.1.jar;C:\Users\akira\.m2\repository\org\springframework\security\spring-security-oauth2-resource-server\7.1.1\spring-security-oauth2-resource-server-7.1.1.jar
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 4                                         {product} {ergonomic}
+     uint ConcGCThreads                            = 2                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 8                                         {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 1048576                                   {product} {ergonomic}
+    uintx GCDrainStackTargetSize                   = 64                                        {product} {ergonomic}
+   size_t InitialHeapSize                          = 100663296                                 {product} {ergonomic}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+   size_t MaxHeapSize                              = 1598029824                                {product} {ergonomic}
+   size_t MinHeapDeltaBytes                        = 1048576                                   {product} {ergonomic}
+   size_t MinHeapSize                              = 8388608                                   {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 4096                                   {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 0                                      {pd product} {ergonomic}
+     bool ProfileInterpreter                       = false                                  {pd product} {command line}
+    uintx ProfiledCodeHeapSize                     = 0                                      {pd product} {ergonomic}
+   size_t SoftMaxHeapSize                          = 1598029824                             {manageable} {ergonomic}
+     intx TieredStopAtLevel                        = 1                                         {product} {command line}
+     bool UseCompressedOops                        = true                           {product lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+     bool UseLargePagesIndividualAllocation        = false                                  {pd product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags foldmultilines=false
+ #1: stderr all=off uptime,level,tags foldmultilines=false
+
+Release file:
+<release file has not been read>
+Environment Variables:
+PATH=C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\nodejs\;C:\Users\akira\AppData\Local\Microsoft\WindowsApps;C:\Users\akira\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\akira\AppData\Roaming\npm;C:\Users\akira\AppData\Local\Programs\Git\cmd;C:\Users\akira\AppData\Local\Programs\DockerDesktop\resources\bin;
+USERNAME=akira
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=AMD64 Family 23 Model 24 Stepping 1, AuthenticAMD
+TMP=C:\Users\akira\AppData\Local\Temp
+TEMP=C:\Users\akira\AppData\Local\Temp
+
+
+
+
+Periodic native trim disabled
+
+---------------  S Y S T E M  ---------------
+
+OS:
+ Windows 11 , 64 bit Build 26100 (10.0.26100.9444)
+OS uptime: 6 days 12:22 hours
+Hyper-V role detected
+
+CPU: total 8 (initial active 8) (8 cores per cpu, 2 threads per core) family 23 model 24 stepping 1 microcode 0x8108109, cx8, cmov, fxsr, ht, mmx, 3dnowpref, sse, sse2, sse3, ssse3, sse4a, sse4.1, sse4.2, popcnt, lzcnt, tsc, tscinvbit, avx, avx2, aes, clmul, bmi1, bmi2, adx, sha, fma, vzeroupper, clflush, clflushopt, hv, rdtscp, f16c
+Processor Information for the first 8 processors :
+  Max Mhz: 2100, Current Mhz: 2100, Mhz Limit: 2100
+
+Memory: 4k page, system-wide physical 6091M (210M free)
+TotalPageFile size 24523M (AvailPageFile size 69M)
+current process WorkingSet (physical memory assigned to process): 12M, peak: 12M
+current process commit charge ("private bytes"): 55M, peak: 151M
+
+vm_info: OpenJDK 64-Bit Server VM (21.0.12.1+9-LTS) for windows-amd64 JRE (21.0.12.1+9-LTS), built on 2026-08-11T21:46:59Z by "Administrator" with MS VC++ 17.14 (VS2022)
+
+END.
