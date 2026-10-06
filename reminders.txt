@@ -76,3 +76,6 @@ JOIN categories c
  AND c.type = v.category_type
  AND c.archived = false
 WHERE EXTRACT(MONTH FROM m.month_start)::int % v.every_n_months = 0;
+
+
+No mac, colocar outra variavel do ambiente por chave e valor: SPRING_PROFILES_ACTIVE=dev
