@@ -1,4 +1,4 @@
-package com.akiratochiro.life_and_money_api.shared;
+package com.akiratochiro.life_and_money_api.web;
 
 import com.akiratochiro.life_and_money_api.budget.BudgetItemNotFoundException;
 import com.akiratochiro.life_and_money_api.budget.IncomeCategoryBudgetException;
@@ -11,7 +11,6 @@ import com.akiratochiro.life_and_money_api.user.EmailAlreadyInUseException;
 import com.akiratochiro.life_and_money_api.user.InvalidCredentialsException;
 import com.akiratochiro.life_and_money_api.user.UserNotFoundException;
 import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -21,7 +20,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
-import javax.security.auth.login.CredentialException;
 import java.util.HashMap;
 import java.util.Map;
 
